@@ -1,11 +1,12 @@
 import React from 'react';
-import { View, Text } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import {createStackNavigator} from '@react-navigation/stack';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+
 Icon.loadFont();
-import { Button } from '@ant-design/react-native';
+import { ActionSheet, Button } from '@ant-design/react-native';
 import SafeAreaView from 'react-native-safe-area-view';
 import { Header } from "react-native-elements";
 
@@ -52,7 +53,7 @@ function TabBarIcon(props: { name: string; color: string }) {
 const TabOneStack = createStackNavigator();
 function TabOneNavigator() {
   return (
-    <TabOneStack.Navigator initialRouteName="TabOneScreen" history={false} >
+    <TabOneStack.Navigator initialRouteName="TabOneScreen" headerMode="none" history={false} >
       <TabOneStack.Screen name="TabOneScreen" component={HomeScreen} />
       <TabOneStack.Screen name="TabOneScreen2" component={SettingsScreen} />
     </TabOneStack.Navigator>
@@ -81,14 +82,40 @@ function SettingsScreen() {
   );
 }
 
+
 function HomeScreen(props) {
+
+    this.showActionSheet = () => {
+        const BUTTONS = [
+            'Operation1',
+            'Operation2',
+            'Operation3',
+            'Delete',
+            'Cancel',
+        ];
+        ActionSheet.showActionSheetWithOptions(
+            {
+                title: 'Title',
+                message: 'Description',
+                options: BUTTONS,
+                cancelButtonIndex: 4,
+                destructiveButtonIndex: 3,
+            },
+            buttonIndex => {
+                //this.setState({ clicked: BUTTONS[buttonIndex] });
+            }
+        );
+    };
+
   return (
     <>
-      <Header
-        statusBarProps={{ barStyle: 'light-content' }}
-        barStyle="light-content" // or directly
-        leftComponent={{ icon: 'west', color: '#fff' }}
-      />
+
+        <View style={[{ padding: 8 }]}>
+            <Button onPress={this.showActionSheet}>showActionSheet</Button>
+        </View>
+        <TouchableOpacity>
+            <Text>Press Here</Text>
+        </TouchableOpacity>
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <Button title="Detail" onPress={() => props.navigation.navigate('TabOneScreen2')}>Go to Detail</Button>
         <Text>Tab Home</Text>

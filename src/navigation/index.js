@@ -23,8 +23,8 @@ const Stack = createStackNavigator();
 
 const RootNavigator = () => {
   return (
-    <Stack.Navigator initialRouteName="Root" headerMode="none">
-
+    <Stack.Navigator initialRouteName="Tab" headerMode="none">
+      <Stack.Screen name="Tab" component={TabNavigation} />
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen name="Seti" component={Seti} />
     </Stack.Navigator>
@@ -34,17 +34,6 @@ const RootNavigator = () => {
 function HomeScreen(props) {
   return (
     <>
-      <Header
-        statusBarProps={{ barStyle: 'light-content' }}
-        barStyle="light-content" // or directly
-        leftComponent={{ icon: 'west', color: '#fff' }}
-        centerComponent={{ text: 'MY TITLE', style: { color: '#fff' } }}
-          containerStyle={{
-          height: 50,
-          backgroundColor: '#f0f',
-          justifyContent: 'space-around',
-        }}
-      />
       <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
         <Button title="Detail" onPress={() => props.navigation.push('Seti')}></Button>
         <Text>Home Screen Default</Text>
@@ -60,3 +49,4 @@ function Seti() {
     </View>
   );
 }
+
