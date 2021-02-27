@@ -1,0 +1,4 @@
+#Sat Feb 20 13:46:31 TRT 2021
+base.0=/Users/ertugruleslik/Documents/htdocs/token/android/app/build/intermediates/dex/release/mergeDexRelease/out/classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

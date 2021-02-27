@@ -1,0 +1,6 @@
+module Pods_token_tokenTests {
+  umbrella header "Pods-token-tokenTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,6 @@
+module Pods_token {
+  umbrella header "Pods-token-umbrella.h"
+
+  export *
+  module * { export * }
+}
